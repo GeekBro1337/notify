@@ -17,3 +17,14 @@ interface ResetPasswordBody {
   sa_password: string
   newPassword: string
 }
+
+interface Notification {
+  id: number
+  forUser: string
+  titel: string
+  discription: string
+  regular: boolean
+  regularData: string
+  createAt: string
+  data: string
+}

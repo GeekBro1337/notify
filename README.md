@@ -1,7 +1,7 @@
 # Auth Backend Test
 
-Простой сервер на Nuxt 3 с примерами эндпоинтов для регистрации и авторизации пользователей.  
-Сервис использует PostgreSQL через Prisma и выдает JWT‑токены.
+Простой сервер на Nuxt 3 с примерами эндпоинтов для регистрации и авторизации пользователей.
+Сервис использует PostgreSQL через Prisma и выдает JWT‑токены. Интерфейс оформлен с помощью Tailwind CSS и Nuxt UI.
 
 ## Быстрый старт
 
@@ -28,6 +28,8 @@ docker compose -f DB/docker-compose.yml up -d
 ```bash
 pnpm dev
 ```
+
+Tailwind CSS и Nuxt UI подключены через модули Nuxt и готовы к использованию в компонентах.
 
 По умолчанию сервер будет доступен на `http://localhost:4001`.
 
@@ -89,12 +91,57 @@ Authorization: Bearer <jwt>
 }
 ```
 
+### POST `/api/notifications`
+
+Создание уведомления. Требуется заголовок
+
+```
+Authorization: Bearer <jwt>
+```
+
+**Тело запроса**
+
+```json
+{
+  "name": "username",
+  "forUser": "username",
+  "titel": "Title",
+  "discription": "Text"
+}
+```
+
+**Ответ**
+
+```json
+{ "notification": { "id": 1, "titel": "Title" } }
+```
+
+### GET `/api/notifications`
+
+Получение уведомлений пользователя. Требуется заголовок
+
+```
+Authorization: Bearer <jwt>
+```
+
+Пример запроса:
+
+```
+GET /api/notifications?name=username
+```
+
+**Ответ**
+
+```json
+{ "notifications": [] }
+```
+
 ## Миграции базы данных
 
 Для применения схемы выполните:
 
 ```bash
-npx prisma migrate deploy
+pnpm exec prisma migrate deploy
 ```
 
 ## Разработка и сборка
