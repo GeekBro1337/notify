@@ -89,6 +89,51 @@ Authorization: Bearer <jwt>
 }
 ```
 
+### POST `/api/notifications`
+
+Создание уведомления. Требуется заголовок
+
+```
+Authorization: Bearer <jwt>
+```
+
+**Тело запроса**
+
+```json
+{
+  "name": "username",
+  "forUser": "username",
+  "titel": "Title",
+  "discription": "Text"
+}
+```
+
+**Ответ**
+
+```json
+{ "notification": { "id": 1, "titel": "Title" } }
+```
+
+### GET `/api/notifications`
+
+Получение уведомлений пользователя. Требуется заголовок
+
+```
+Authorization: Bearer <jwt>
+```
+
+Пример запроса:
+
+```
+GET /api/notifications?name=username
+```
+
+**Ответ**
+
+```json
+{ "notifications": [] }
+```
+
 ## Миграции базы данных
 
 Для применения схемы выполните:
