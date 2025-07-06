@@ -94,7 +94,7 @@ Authorization: Bearer <jwt>
 Для применения схемы выполните:
 
 ```bash
-npx prisma migrate deploy
+pnpm exec prisma migrate deploy
 ```
 
 ## Разработка и сборка
