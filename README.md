@@ -1,15 +1,26 @@
 # Elysia with Bun runtime
 
 ## Getting Started
-To get started with this template, simply paste this command into your terminal:
+To install dependencies run:
 ```bash
-bun create elysia ./elysia-example
+bun install
 ```
 
 ## Development
-To start the development server run:
+Start the development server:
 ```bash
 bun run dev
 ```
 
-Open http://localhost:3000/ with your browser to see the result.
+The API will be available at `http://localhost:3000`.
+
+### Endpoints
+- `POST /api/notify` - create a notification
+- `GET /api/notify` - list all notifications
+
+Example POST request:
+```bash
+curl -X POST http://localhost:3000/api/notify \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Собрание","description":"Команда в Zoom","datetime":"2025-07-12T17:00:00.000Z"}'
+```
